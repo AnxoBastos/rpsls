@@ -1,6 +1,8 @@
-# RPS
+# RPSLS
 
 En este proyecto hago uso del conocimiento que tengo en desarrollo en Java para aplicar un sistema de motores con el cual generar las acciones de la maquina. Estos motores heredarán de una misma clase abstracta usando la libreria Abstract Base Class de Python.
+
+(Se han modificado tanto los enums, como las globales y los motores para que trabajen de manera correcta con las nuevas acciones)
 
 A continuación se explica el funcionamiento de los distintos motores:
 - **ActionEngine**: Clase abstracta de la que heredan el resto de motores. Cuenta con un metodo con el decorador *@abstractmethod* llamado *generate_action()*. Este decorador obliga a que las clases que hereden de **ActionEngine** tengan que implementar el metodo.
