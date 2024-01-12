@@ -3,11 +3,11 @@ from enums import GameAction
 from abc import ABCMeta, abstractmethod
 
 Victories = {
-    GameAction.Scissors: [GameAction.Lizard, GameAction.Paper],
-    GameAction.Paper: [GameAction.Spock, GameAction.Rock],
-    GameAction.Rock: [GameAction.Lizard, GameAction.Scissors],
-    GameAction.Lizard: [GameAction.Spock, GameAction.Paper],
-    GameAction.Spock: [GameAction.Scissors, GameAction.Rock]
+    GameAction.Scissors: (GameAction.Lizard, GameAction.Paper),
+    GameAction.Paper: (GameAction.Spock, GameAction.Rock),
+    GameAction.Rock: (GameAction.Lizard, GameAction.Scissors),
+    GameAction.Lizard: (GameAction.Spock, GameAction.Paper),
+    GameAction.Spock: (GameAction.Scissors, GameAction.Rock)
 }
 
 class ActionEngine(metaclass=ABCMeta):
