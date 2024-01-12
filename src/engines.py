@@ -3,11 +3,11 @@ from enums import GameAction
 from abc import ABCMeta, abstractmethod
 
 Victories = {
-    GameAction.Scissors: (GameAction.Lizard, GameAction.Paper),
-    GameAction.Paper: (GameAction.Spock, GameAction.Rock),
-    GameAction.Rock: (GameAction.Lizard, GameAction.Scissors),
-    GameAction.Lizard: (GameAction.Spock, GameAction.Paper),
-    GameAction.Spock: (GameAction.Scissors, GameAction.Rock)
+    GameAction.Scissors: (GameAction.Spock, GameAction.Rock),
+    GameAction.Paper: (GameAction.Scissors, GameAction.Lizard),
+    GameAction.Rock: (GameAction.Paper, GameAction.Spock),
+    GameAction.Lizard: (GameAction.Scissors, GameAction.Rock),
+    GameAction.Spock: (GameAction.Lizard, GameAction.Paper)
 }
 
 class ActionEngine(metaclass=ABCMeta):
@@ -47,7 +47,7 @@ class TenMovesEngine(ActionEngine):
         if most_frequent == None:
             most_frequent = GameAction.Rock
 
-        return Victories[most_frequent]
+        return random.choice(Victories[most_frequent])
     
 class PreviousMoveEngine(ActionEngine):
 
@@ -58,7 +58,7 @@ class PreviousMoveEngine(ActionEngine):
         if not self._opponent_history:
             self._opponent_history.append(GameAction.Rock)
 
-        return Victories[self._opponent_history[-1]]
+        return random.choice(Victories[self._opponent_history[-1]])
 
 class PredictiveEngine(ActionEngine):
     
