@@ -1,4 +1,4 @@
-from engines import PreviousMoveEngine
+from engines import PredictiveEngine
 from enums import GameAction, GameResult
 
 def assess_game(user_action, computer_action):
@@ -63,7 +63,7 @@ def play_another_round():
 
 def main():
 
-    engine = PreviousMoveEngine()
+    engine = PredictiveEngine()
 
     while True:
         try:

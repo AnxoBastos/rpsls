@@ -67,12 +67,28 @@ class PredictiveEngine(ActionEngine):
                 (GameAction.Rock, GameAction.Rock) : 0, 
                 (GameAction.Rock, GameAction.Paper) : 0, 
                 (GameAction.Rock, GameAction.Scissors) : 0, 
+                (GameAction.Rock, GameAction.Lizard) : 0, 
+                (GameAction.Rock, GameAction.Spock) : 0, 
                 (GameAction.Paper, GameAction.Rock) : 0, 
                 (GameAction.Paper, GameAction.Paper) : 0, 
                 (GameAction.Paper, GameAction.Scissors) : 0,
+                (GameAction.Paper, GameAction.Lizard) : 0, 
+                (GameAction.Paper, GameAction.Spock) : 0,
                 (GameAction.Scissors, GameAction.Rock) : 0, 
                 (GameAction.Scissors, GameAction.Paper) : 0, 
-                (GameAction.Scissors, GameAction.Scissors) : 0
+                (GameAction.Scissors, GameAction.Scissors) : 0,
+                (GameAction.Scissors, GameAction.Lizard) : 0, 
+                (GameAction.Scissors, GameAction.Spock) : 0,
+                (GameAction.Lizard, GameAction.Rock) : 0, 
+                (GameAction.Lizard, GameAction.Paper) : 0, 
+                (GameAction.Lizard, GameAction.Scissors) : 0, 
+                (GameAction.Lizard, GameAction.Lizard) : 0, 
+                (GameAction.Lizard, GameAction.Spock) : 0,
+                (GameAction.Spock, GameAction.Rock) : 0, 
+                (GameAction.Spock, GameAction.Paper) : 0, 
+                (GameAction.Spock, GameAction.Scissors) : 0, 
+                (GameAction.Spock, GameAction.Lizard) : 0, 
+                (GameAction.Spock, GameAction.Spock) : 0
             }
         super().__init__()
 
@@ -87,7 +103,9 @@ class PredictiveEngine(ActionEngine):
         potential_plays = [
             (self._opponent_history[-1], GameAction.Rock),
             (self._opponent_history[-1], GameAction.Paper),
-            (self._opponent_history[-1], GameAction.Scissors)
+            (self._opponent_history[-1], GameAction.Scissors),
+            (self._opponent_history[-1], GameAction.Lizard),
+            (self._opponent_history[-1], GameAction.Spock)
         ]
 
         sub_order = {
@@ -97,4 +115,4 @@ class PredictiveEngine(ActionEngine):
 
         prediction = max(sub_order, key=sub_order.get)[-1]
 
-        return Victories[prediction]
+        return random.choice(Victories[prediction])
